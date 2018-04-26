@@ -110,6 +110,7 @@ public class Lift {
 		
 	public void setLiftHeight(LiftHeight height) {
 		Util.consoleLog("Set Height to " + height.name());
+		if (pidController.isEnabled()) pidController.disable();
 		pidController.enable();
 		pidController.setSetpoint(height.getEncoderCount());
 		PIDChecker pidChecker = new PIDChecker(pidController, robot);
@@ -245,7 +246,7 @@ class PIDChecker extends Thread {
 	
 	public void run() {
 		//while (Math.abs(pid.getSetpoint()-Devices.winchEncoder.get()) > 50 && pid.get() > 0.2 && !isInterrupted() && robot.isEnabled() && pid.isEnabled()) { Timer.delay(0.2); }
-		while (!isInterrupted() && robot.isEnabled() && pid.isEnabled()) { Timer.delay(0.2); }
+		while (!isInterrupted() && robot.isEnabled() && pid.isEnabled()) { LCD.printLine(7, "winchEncoder=%d", Devices.winchEncoder.get()); Timer.delay(0.2); }
 		pid.disable();
 		Util.consoleLog();
 	}
