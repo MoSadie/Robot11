@@ -23,14 +23,25 @@ deploy {
     }
 }
 
+// Setup eclipse classpath settings, so the javadoc and sources are available in eclipse
+eclipse {
+    classpath{
+        downloadJavadoc = true
+        downloadSources = true
+    }
+}
+
+repositories {
+	maven { url 'https://jitpack.io' }
+}
+
 // Defining my dependencies. In this case, WPILib (+ friends), CTRE Phoenix (Talon SRX)
 // and NavX.
 dependencies {
     compile wpilib()
     compile ctre()
     compile navx()
-	compile files(new File(System.getProperty("user.home"), '/wpilib/user/java/lib/RobotLib.jar'))
-    //compile openrio.powerup.matchData()
+	compile 'com.github.MoSadie:RobotLib:d1de93266b' //TODO: Update this to correct repo and version.
 }
 
 // Setting up my Jar File. In this case, adding all libraries into the main jar ('fat jar')
