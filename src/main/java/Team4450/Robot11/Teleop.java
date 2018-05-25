@@ -120,8 +120,12 @@ class Teleop extends GamePhase
 		utilityStick.addJoyStickEventListener(new UtilityStickListener());
 		utilityStick.Start();
 
-		// Tighten up dead zone for smoother climber movement.
-		utilityStick.deadZone = .15;
+		try {
+			// Tighten up dead zone for smoother climber movement.
+			utilityStick.deadZone(.15);
+		} catch (Exception e) {
+			Util.logException(e);
+		}
 		
 		Util.consoleLog("Joystick Setup Finished.");
 

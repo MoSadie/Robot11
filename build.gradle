@@ -41,7 +41,7 @@ dependencies {
     compile wpilib()
     compile ctre()
     compile navx()
-	compile 'com.github.MoSadie:RobotLib:d1de93266b' //TODO: Update this to correct repo and version.
+	compile 'com.github.MoSadie:RobotLib:e0501b7aa8' //TODO: Update this to correct repo and version.
 }
 
 // Setting up my Jar File. In this case, adding all libraries into the main jar ('fat jar')
